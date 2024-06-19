@@ -1,7 +1,6 @@
 [build]
-publish = "public"
-command = "npm run build"
-functions = "functions"
+  base = "your build command"
+  publish = "directory to publish"
 
 [[redirects]]
   from = "/api/*"
