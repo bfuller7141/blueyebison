@@ -1,0 +1,856 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: photos
+    label: Photos
+    folder: cms/photos
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_cover-image
+        label: Cover Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_gallery
+        label: Gallery
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_open-graph-image
+        label: Open Graph Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_meta-description
+        label: Meta Description
+        widget: text
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: photos
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[photos].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: >-
+              Original text: The Magic Behind Blue Eye Bison's Photography, key:
+              697a59c3
+            label: Text
+            name: 697a59c3
+            widget: string
+          - hint: >-
+              Original text: Hailing from the enchanting landscapes of Northern
+              New Mexico, Wesley's connection with nature and his surroundings
+              has inspired his unique vision. With a commitment to capturing
+              fleeting moments and unveiling the extraordinary in the ordinary,
+              Wesley's work encapsulates the essence of street photography,
+              astrophotography, and landscape photography., key: -21a475ee
+            label: Text
+            name: '-21a475ee'
+            widget: text
+          - hint: 'Original text: Contact Me, key: 7f2745d8'
+            label: Text
+            name: 7f2745d8
+            widget: string
+          - hint: >-
+              Original text: Nature's Mysteries Seen Through Phography, key:
+              -a88e12e
+            label: Text
+            name: '-a88e12e'
+            widget: string
+          - hint: >-
+              Original text: Every click of the shutter is infused with Wesley's
+              genuine love for photography. His keen eye for detail and
+              impeccable timing enable him to freeze time and preserve fleeting
+              emotions, delicate colors, and share breathtaking stories.
+              Everyday becomes extraordinary, the familiar becomes mysterious,
+              and the unnoticed becomes awe-inspiring., key: 5bc09272
+            label: Text
+            name: 5bc09272
+            widget: text
+          - hint: 'Original text: See My Work, key: -2414a1e8'
+            label: Text
+            name: '-2414a1e8'
+            widget: string
+          - hint: 'Original text: The Mission, key: 36fd1c9d'
+            label: Text
+            name: 36fd1c9d
+            widget: string
+          - hint: >-
+              Original text: To unveil the hidden wonders of the world through
+              distinct, vibrant, and captivating photography. Follow my journey
+              uncovering the hidden beauty of everyday life., key: 2f95ae68
+            label: Text
+            name: 2f95ae68
+            widget: text
+          - hint: 'Original text: Captured Beauty, key: -15643b02'
+            label: Text
+            name: '-15643b02'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Let''s Connect, key: -46620def'
+            label: Text
+            name: '-46620def'
+            widget: string
+          - hint: >-
+              Original text: I would love to hear from you! Whether you have
+              inquiries about my services, want to discuss a potential
+              collaboration, or simply want to share your thoughts on my work, I
+              encourage you to reach out. Your feedback and inquiries are
+              invaluable to me. Also, be sure to follow me on Instagram to stay
+              up to date on the latest photos!, key: -74c6702c
+            label: Text
+            name: '-74c6702c'
+            widget: text
+          - hint: 'Original text: Follow me on Instagram, key: 297089ca'
+            label: Text
+            name: 297089ca
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Architecture, key: 3bd7bd73'
+            label: Text
+            name: 3bd7bd73
+            widget: string
+          - hint: 'Original text: Astrophotography, key: -13e33fe2'
+            label: Text
+            name: '-13e33fe2'
+            widget: string
+          - hint: 'Original text: Graffiti, key: 94d3ce8'
+            label: Text
+            name: 94d3ce8
+            widget: string
+          - hint: 'Original text: Landscape, key: -3347ed65'
+            label: Text
+            name: '-3347ed65'
+            widget: string
+          - hint: 'Original text: Objects, key: 4c5cf4'
+            label: Text
+            name: 4c5cf4
+            widget: string
+          - hint: 'Original text: Portraits, key: -450e27e8'
+            label: Text
+            name: '-450e27e8'
+            widget: string
+          - hint: 'Original text: © 2023 Blue Eye Bison. , key: -1bbf3a2e'
+            label: Text
+            name: '-1bbf3a2e'
+            widget: string
+          - hint: 'Original text: Designed By Tripass Design, key: 4c828ac8'
+            label: Text
+            name: 4c828ac8
+            widget: string
+          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
+            label: Text
+            name: '-3fbde6f6'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. Duis
+              cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+              commodo diam libero vitae erat. Aenean faucibus nibh et justo
+              cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
+              tristique posuere., key: -5286fc08
+            label: Text
+            name: '-5286fc08'
+            widget: text
+          - hint: 'Original text: Protected Page, key: -11d4bbff'
+            label: Text
+            name: '-11d4bbff'
+            widget: string
+          - hint: 'Original text: Password, key: 4c641ebb'
+            label: Text
+            name: 4c641ebb
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: 404, key: c938'
+            label: Text
+            name: c938
+            widget: string
+          - hint: 'Original text: Oops! That Page Can''t Be Found!, key: -7e16ac01'
+            label: Text
+            name: '-7e16ac01'
+            widget: string
+          - hint: 'Original text: Back Home, key: -3c849388'
+            label: Text
+            name: '-3c849388'
+            widget: string
+          - hint: 'Original text: Effective Date: 06/22/2023, key: -63d6b7ae'
+            label: Text
+            name: '-63d6b7ae'
+            widget: string
+          - hint: >-
+              Original text: Thank you for visiting Blue Eye Bison's website
+              ("Website"), hosted by Webflow, accessible at
+              blue-eye-bison.webflow.io. At Blue Eye Bison, we are committed to
+              protecting your privacy and ensuring the security of your personal
+              information. This Privacy Policy outlines how we collect, use, and
+              protect any information you provide when interacting with our
+              Website., key: -b160f2b
+            label: Text
+            name: '-b160f2b'
+            widget: text
+          - hint: 'Original text: Information Collection and Use:, key: -d572596'
+            label: Text
+            name: '-d572596'
+            widget: string
+          - hint: >-
+              Original text: We currently do not collect any personal
+              information or use cookies on our Website. You can browse our
+              Website anonymously without providing any personally identifiable
+              information., key: 51ddaec0
+            label: Text
+            name: 51ddaec0
+            widget: text
+          - hint: 'Original text: Third-Party Links:, key: -3281edf'
+            label: Text
+            name: '-3281edf'
+            widget: string
+          - hint: >-
+              Original text: Our Website may contain links to third-party
+              websites for your convenience or reference. Please note that we
+              have no control over the privacy policies or practices of these
+              external websites. Therefore, we encourage you to review the
+              privacy policies of those websites before providing any personal
+              information., key: -770c8ba6
+            label: Text
+            name: '-770c8ba6'
+            widget: text
+          - hint: 'Original text: Data Security:, key: 20126404'
+            label: Text
+            name: '20126404'
+            widget: string
+          - hint: >-
+              Original text: At Blue Eye Bison, we take the security of your
+              information seriously. While we strive to protect your personal
+              information, please be aware that no method of transmission or
+              electronic storage is 100% secure. We cannot guarantee the
+              absolute security of any information you transmit to us through
+              our Website., key: 4f27bb2f
+            label: Text
+            name: 4f27bb2f
+            widget: text
+          - hint: 'Original text: Children''s Privacy:, key: -484e5d39'
+            label: Text
+            name: '-484e5d39'
+            widget: string
+          - hint: >-
+              Original text: Our Website is not intended for children under the
+              age of 13. We do not knowingly collect personal information from
+              children. If you are a parent or guardian and believe that your
+              child has provided personal information on our Website, please
+              contact us immediately, and we will make efforts to promptly
+              remove such information from our records., key: -24b4d3d
+            label: Text
+            name: '-24b4d3d'
+            widget: text
+          - hint: 'Original text: Changes to this Privacy Policy:, key: -1514ff0a'
+            label: Text
+            name: '-1514ff0a'
+            widget: string
+          - hint: >-
+              Original text: Blue Eye Bison reserves the right to update or
+              modify this Privacy Policy at any time. Any changes will be
+              effective immediately upon posting the revised Privacy Policy on
+              our Website. We encourage you to periodically review this Privacy
+              Policy to stay informed about how we collect, use, and protect
+              your information., key: -811470
+            label: Text
+            name: '-811470'
+            widget: text
+          - hint: 'Original text: Contact Us:, key: 65c1951c'
+            label: Text
+            name: 65c1951c
+            widget: string
+          - hint: >-
+              Original text: If you have any questions, concerns, or requests
+              regarding this Privacy Policy or the handling of your personal
+              information, please contact us using the information provided
+              below:, key: 7aa5f0b8
+            label: Text
+            name: 7aa5f0b8
+            widget: text
+          - hint: 'Original text: Email: blue.eye.bison@gmail.com, key: -e756b93'
+            label: Text
+            name: '-e756b93'
+            widget: string
+          - hint: >-
+              Original text: By using our Website, you signify your acceptance
+              of this Privacy Policy. If you do not agree with the terms of this
+              policy, please do not use our Website., key: -3406fe4e
+            label: Text
+            name: '-3406fe4e'
+            widget: text
+          - hint: 'Original text: Last updated: 06/22/2023, key: 2ba44fdc'
+            label: Text
+            name: 2ba44fdc
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #Work, key: 21671d4'
+            label: Link
+            name: 21671d4
+            widget: string
+          - hint: 'Original link: #Contact, key: -30472183'
+            label: Link
+            name: '-30472183'
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/blue.eye.bison/, key:
+              4a7f1245
+            label: Link
+            name: 4a7f1245
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link:
+              http://blue-eye-bison.webflow.io/photos/architecture, key:
+              192b9664
+            label: Link
+            name: 192b9664
+            widget: string
+          - hint: >-
+              Original link:
+              https://blue-eye-bison.webflow.io/photos/astrophotography, key:
+              6afa5d72
+            label: Link
+            name: 6afa5d72
+            widget: string
+          - hint: >-
+              Original link: http://blue-eye-bison.webflow.io/photos/graffiti,
+              key: 230d3659
+            label: Link
+            name: 230d3659
+            widget: string
+          - hint: >-
+              Original link: http://blue-eye-bison.webflow.io/photos/landscape,
+              key: -1508b8b6
+            label: Link
+            name: '-1508b8b6'
+            widget: string
+          - hint: >-
+              Original link: http://blue-eye-bison.webflow.io/photos/objects,
+              key: -7210e9d
+            label: Link
+            name: '-7210e9d'
+            widget: string
+          - hint: >-
+              Original link: http://blue-eye-bison.webflow.io/photos/portraits,
+              key: -26cef339
+            label: Link
+            name: '-26cef339'
+            widget: string
+          - hint: 'Original link: http://www.tripassdesign.com, key: -47ac18dc'
+            label: Link
+            name: '-47ac18dc'
+            widget: string
+          - hint: 'Original link: /privacy/, key: -c8c512a'
+            label: Link
+            name: '-c8c512a'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 5c54f81d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i1c751408
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6edab436
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7e0bea96'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: d14ce0a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 47daaea3
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2606dfa2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '0'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6b7c214b'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-72f073a2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 71fc1478
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4e6bed69
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-30025f32'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-33e953a9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5d6d784f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-ea78e07'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4abef31c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
