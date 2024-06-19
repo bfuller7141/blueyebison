@@ -1,9 +1,18 @@
 backend:
+commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
   name: git-gateway
+  repo: bfuller7141/blueyebison
   accept_roles:
     - admin
     - editor
   branch: master
+  api_root: https://gitlab.com/api/v4
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
