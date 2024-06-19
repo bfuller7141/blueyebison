@@ -15,10 +15,9 @@
     "optimize": "node ./_utils/scripts/optimize-assets.js",
     "preserve": "npm run optimize",
     "prebuild": "npm run optimize",
-    "serve": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy",
-    "local-backend": "npx netlify-cms-proxy-server",
-    "start": 
+    "serve": "eleventy --serve",
+    "build": "eleventy",
+    "local-backend": "npx netlify-cms-proxy-server"
   },
   "devDependencies": {
     "date-fns": "2.16.1",
