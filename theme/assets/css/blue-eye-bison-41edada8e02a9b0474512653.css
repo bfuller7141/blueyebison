@@ -999,25 +999,7 @@ p {
   align-self: center;
 }
 
-#w-node-d20dcc49-8c5e-f61e-627d-646ad9b46905-ba0601b2 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-}
-
-#w-node-b804918c-0741-b3c2-50d7-37a2cf63c759-ba0601b2 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-  align-self: center;
-}
-
-#w-node-_17f5c2ee-fa58-c9e3-42ec-3484909d8d0a-ba0601b2 {
-  grid-area: span 6 / span 1 / span 6 / span 1;
-}
-
-#w-node-_1594babc-7707-07c8-0e59-d9d821467c23-ba0601b2, #w-node-c0e23dde-ed83-384a-33fe-a5af73dbf23b-ba0601b2, #w-node-e3908a06-7092-6756-2b2d-aae6de46120d-ba0601b2, #w-node-_931d02d9-0555-661b-9cfd-a90644563081-ba0601b2, #w-node-_0451bea4-a848-6325-3df1-1b8367023715-ba0601b2 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-  align-self: center;
-}
-
-#w-node-_4cad098b-0c93-e740-44c4-a703279ac2be-ba0601b3 {
+#w-node-d20dcc49-8c5e-f61e-627d-646ad9b46905-ba0601b2, #w-node-_4cad098b-0c93-e740-44c4-a703279ac2be-ba0601b3 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
