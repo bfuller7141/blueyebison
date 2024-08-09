@@ -6,8 +6,8 @@ layout: "[photos].html"
 slug: portraits
 published-on: 2024-06-20T07:04:52.088Z
 f_cover-image:
-  url: /assets/external/66720e4756fac610ba06024c_rowan20in20action.jpg
-  alt: null
+  url: /assets/images/kanau-forest.jpg
+  alt: Kanau's Natural Habitat | Mineral Hill, NM 06.27.2023
 f_gallery:
   - url: /assets/external/66720e4756fac610ba06025c_rowan20staring20at20a20rock.jpg
     alt: man looking at a rock.
@@ -49,8 +49,8 @@ f_gallery:
   - url: /assets/external/66720e4756fac610ba06024c_rowan20in20action.jpg
     alt: man looking off to the distance.
 f_open-graph-image:
-  url: /assets/external/66720e4756fac610ba060263_open-graph-image-6.png
-  alt: null
+  url: /assets/images/josh-in-las-vegas-nv.jpg
+  alt: Having Fun at Twenty-One (Josh) | Las Vegas, NV 07.29.2023
 f_meta-description: "Experience the power of human expression with Blue Eye
   Bison's evocative portrait gallery. Wesley Fuller's intimate portraits capture
   the essence of individuals, unveiling their unique stories, emotions, and
