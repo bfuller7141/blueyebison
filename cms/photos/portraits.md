@@ -48,9 +48,11 @@ f_gallery:
     alt: white dog sitting in chair.
   - url: /assets/external/66720e4756fac610ba06024c_rowan20in20action.jpg
     alt: man looking off to the distance.
+  - url: /assets/images/josh-in-las-vegas-nv.jpg
+    alt: Having Fun at Twenty-One (Josh) | Las Vegas, NV 07.29.2023
 f_open-graph-image:
-  url: /assets/images/josh-in-las-vegas-nv.jpg
-  alt: Having Fun at Twenty-One (Josh) | Las Vegas, NV 07.29.2023
+  url: /assets/images/kanau-forest.jpg
+  alt: Kanau's Natural Habitat | Mineral Hill, NM 06.27.2023
 f_meta-description: "Experience the power of human expression with Blue Eye
   Bison's evocative portrait gallery. Wesley Fuller's intimate portraits capture
   the essence of individuals, unveiling their unique stories, emotions, and
