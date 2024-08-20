@@ -1,5 +1,7 @@
 ---
 title: 35mm Film
+created-on: 2024-08-20T17:57:00.000Z
+published-on: 2024-08-20T17:57:00.000Z
 f_cover-image:
   url: /assets/images/000061290019.jpg
   alt: Steering Wheel Bolted to Tree Branch | 2023 | Los Alamos, NM
