@@ -1,9 +1,10 @@
 ---
 title: Architecture
+created-on: 2023-06-21T00:23:32.112Z
+updated-on: 2023-06-22T22:32:26.898Z
+layout: "[photos].html"
 slug: architecture
-updated-on: '2023-06-22T22:32:26.898Z'
-created-on: '2023-06-21T00:23:32.112Z'
-published-on: '2024-06-20T07:04:52.088Z'
+published-on: 2024-06-20T07:04:52.088Z
 f_cover-image:
   url: /assets/external/66720e4756fac610ba060207__y3c4825.jpg
   alt: null
@@ -40,33 +41,20 @@ f_gallery:
     alt: building hidden behind trees.
   - url: /assets/external/66720e4756fac610ba0601f4__y3c5358.jpg
     alt: adobe building next to path.
-  - url: /assets/external/66720e4756fac610ba0601f9_0322001020copy.jpg
-    alt: wooden ladder against rocks.
   - url: /assets/external/66720e4756fac610ba0601f0_chairlift.jpg
     alt: old chairlift engine room.
-  - url: /assets/external/66720e4756fac610ba0601f7_station1.jpg
-    alt: graffiti covered building.
-  - url: /assets/external/66720e4756fac610ba0601f3_station2.jpg
-    alt: large arrow in gas station parking lot.
-  - url: /assets/external/66720e4756fac610ba0601ee_station3.jpg
-    alt: top of large arrow against bright blue sky.
-  - url: /assets/external/66720e4756fac610ba0601f6_station4.jpg
-    alt: graffiti covered building in empty lot.
   - url: /assets/external/66720e4756fac610ba0601f5__y3c331920copy202.jpg
     alt: old la tiendita sign fixed to wooden fence.
   - url: /assets/external/66720e4756fac610ba0601f1__y3c332420copy.jpg
     alt: old mail boxes.
   - url: /assets/external/66720e4756fac610ba0601ef__y3c3325.jpg
     alt: tin roofed wooden structure on cloudy day.
-f_meta-description: >-
-  Discover the captivating world of architectural photography at Blue Eye Bison.
-  Immerse yourself in the mesmerizing lines, shapes, and structures that
-  redefine our urban landscapes. 
 f_open-graph-image:
   url: /assets/external/66720e4756fac610ba060261_open-graph-image-1.png
   alt: null
-layout: '[photos].html'
+f_meta-description: "Discover the captivating world of architectural photography
+  at Blue Eye Bison. Immerse yourself in the mesmerizing lines, shapes, and
+  structures that redefine our urban landscapes. "
 tags: photos
+date: 2024-08-20T18:00:00.000Z
 ---
-
-
